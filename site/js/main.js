@@ -2,9 +2,8 @@ import { FIELDS } from "./fields.js";
 
 // The hero plays the live wireframe over its still (assets/hero.jpg). It starts once the
 // rest of the page has loaded, and runs only while the hero is on screen: scrolled away, it
-// is removed, so it costs nothing; scrolled back, it starts again. It starts 40 s into the
-// run, where the landscape is already full. Visitors who ask for reduced motion or for
-// data saving keep the still.
+// is removed, so it costs nothing; scrolled back, it starts again from the beginning of the
+// run. Visitors who ask for reduced motion or for data saving keep the still.
 function startStage() {
 	const stage = document.getElementById("stage");
 	const still = matchMedia("(prefers-reduced-motion: reduce)").matches || navigator.connection?.saveData;
@@ -13,7 +12,7 @@ function startStage() {
 	const show = () => {
 		if (frame) return;
 		frame = document.createElement("iframe");
-		frame.src = "wireframe/vbmc/?hud=0&t=40";
+		frame.src = "wireframe/vbmc/?hud=0";
 		frame.title = "A PyVBMC run, drawn as a wireframe landscape";
 		frame.tabIndex = -1;
 		const shown = frame;
