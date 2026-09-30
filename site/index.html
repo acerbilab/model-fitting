@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model fitting · acerbilab</title>
+<meta name="description" content="Open-source tools for fitting models to data: PyBADS for the best-fitting parameters, PyVBMC for the posterior and the model evidence, PyIBS for models you can only simulate. From Luigi Acerbi's group at the University of Helsinki.">
+<meta name="theme-color" content="#04070c">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://acerbilab.org/model-fitting/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://acerbilab.org/model-fitting/">
+<meta property="og:title" content="Model fitting · acerbilab">
+<meta property="og:description" content="Find the best-fitting parameters, the posterior and the model evidence from a small budget of model evaluations. PyBADS, PyVBMC and PyIBS, in Python and MATLAB.">
+<meta property="og:image" content="https://acerbilab.org/model-fitting/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A glowing wireframe landscape: a PyVBMC run on a banana-shaped posterior.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=STIX+Two+Text:ital@1&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+	<a class="brand" href="/">acerbilab <span>/ model fitting</span></a>
+	<nav aria-label="Sections">
+		<a href="#which">Which tool?</a>
+		<a href="#tools">Tools</a>
+		<a href="#next">Next wave</a>
+		<a href="#in-use">In use</a>
+		<a href="#help">Help</a>
+	</nav>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="title">
+	<div class="stage" id="stage" aria-hidden="true">
+		<img class="poster" src="assets/hero.jpg" alt="" width="1600" height="900">
+	</div>
+	<div class="wrap hero-text">
+		<p class="eyebrow">Open-source tools for fitting models to data</p>
+		<h1 id="title">Make every likelihood evaluation count.</h1>
+		<p class="lead">Find the best-fitting parameters, the full posterior and the model evidence from a small budget of model evaluations, whether each one takes a fraction of a second or several minutes, and even when the likelihood is noisy or only available by simulation. In Python and MATLAB.</p>
+		<div class="actions">
+			<a class="btn primary" href="#which">Which tool do I need?</a>
+			<a class="btn ghost" href="wireframe/vbmc/">Explore a run in 3D</a>
+		</div>
+	</div>
+	<p class="stage-note wrap"><span class="c-vbmc">PyVBMC</span> learning a banana-shaped posterior, drawn from a real run. <a href="wireframe/vbmc/">Explore it</a></p>
+</section>
+
+<section id="which" class="band" aria-labelledby="which-title">
+	<div class="wrap">
+		<p class="kicker">Start here</p>
+		<h2 id="which-title">Which tool do I need?</h2>
+		<div class="cards three">
+			<a class="card pick" href="#bads" style="--accent: var(--bads)">
+				<p class="q">“I want the parameters that fit my data best.”</p>
+				<p class="a">→ <b>PyBADS</b></p>
+				<p class="small">Maximum-likelihood and MAP fits, with up to about 20 parameters.</p>
+			</a>
+			<a class="card pick" href="#vbmc" style="--accent: var(--vbmc)">
+				<p class="q">“I want the posterior over my parameters, and to compare models.”</p>
+				<p class="a">→ <b>PyVBMC</b></p>
+				<p class="small">The posterior and the model evidence, best with up to about 10 parameters.</p>
+			</a>
+			<a class="card pick" href="#ibs" style="--accent: var(--ibs)">
+				<p class="q">“I can simulate my model, but I can't write down its likelihood.”</p>
+				<p class="a">→ <b>PyIBS</b>, then PyBADS or PyVBMC</p>
+				<p class="small">For data with discrete responses.</p>
+			</a>
+		</div>
+	</div>
+</section>
+
+<section id="tools" class="band" aria-labelledby="tools-title">
+	<div class="wrap">
+		<p class="kicker">The tools</p>
+		<h2 id="tools-title">Ready to use</h2>
+
+		<article id="bads" class="tool" style="--accent: var(--bads)">
+			<div class="tool-head">
+				<p class="role">Fit your model</p>
+				<h3>PyBADS <span>BADS in MATLAB</span></h3>
+			</div>
+			<div class="tool-body">
+				<p>Bayesian Adaptive Direct Search: fast, robust optimization for maximum-likelihood and MAP fits when the objective is rough, noisy or slow to evaluate, with up to about 20 parameters.</p>
+				<code class="install">pip install pybads</code>
+				<p class="links"><a href="/pybads/">Docs</a> <a href="https://github.com/acerbilab/pybads">Python</a> <a href="https://github.com/acerbilab/bads">MATLAB</a></p>
+				<p class="ref">Acerbi &amp; Ma, <a href="https://arxiv.org/abs/1705.04405">NeurIPS 2017</a> · Singh &amp; Acerbi, <a href="https://doi.org/10.21105/joss.05694">JOSS 2024</a></p>
+			</div>
+		</article>
+
+		<article id="vbmc" class="tool" style="--accent: var(--vbmc)">
+			<div class="tool-head">
+				<p class="role">Get the posterior and the evidence</p>
+				<h3>PyVBMC <span>VBMC in MATLAB</span></h3>
+			</div>
+			<div class="tool-body">
+				<p>Variational Bayesian Monte Carlo: an approximate posterior over your parameters and an estimate of the model evidence, for model comparison, from a small budget of likelihood evaluations, even noisy ones. Best with up to about 10 parameters.</p>
+				<code class="install">pip install pyvbmc</code>
+				<p class="links"><a href="/pyvbmc/">Docs</a> <a href="https://github.com/acerbilab/pyvbmc">Python</a> <a href="https://github.com/acerbilab/vbmc">MATLAB</a> <a href="wireframe/vbmc/">A run in 3D</a></p>
+				<p class="ref">Acerbi, <a href="https://arxiv.org/abs/1810.05558">NeurIPS 2018</a> and <a href="https://arxiv.org/abs/2006.08655">NeurIPS 2020</a> · Huggins, Li, Tobaben, Aarnos &amp; Acerbi, <a href="https://doi.org/10.21105/joss.05428">JOSS 2023</a></p>
+			</div>
+		</article>
+
+		<article id="ibs" class="tool" style="--accent: var(--ibs)">
+			<div class="tool-head">
+				<p class="role">When you can only simulate</p>
+				<h3>PyIBS <span>IBS in MATLAB</span></h3>
+			</div>
+			<div class="tool-body">
+				<p>Inverse binomial sampling: unbiased, efficient estimates of the log-likelihood of models you can simulate but not write down, for data with discrete responses. Pair it with PyBADS or PyVBMC, which are built to handle noisy estimates.</p>
+				<code class="install">pip install pyibs</code>
+				<p class="links"><a href="https://github.com/acerbilab/pyibs">Python</a> <a href="https://github.com/acerbilab/ibs">MATLAB</a></p>
+				<p class="ref">van Opheusden, Acerbi &amp; Ma, <a href="https://doi.org/10.1371/journal.pcbi.1008483">PLOS Computational Biology 2020</a></p>
+			</div>
+		</article>
+	</div>
+</section>
+
+<section id="next" class="band" aria-labelledby="next-title">
+	<div class="wrap">
+		<p class="kicker">Next wave</p>
+		<h2 id="next-title">Inference in a single forward pass</h2>
+		<article class="tool" style="--accent: var(--ace)">
+			<div class="tool-head">
+				<p class="role">In active development</p>
+				<h3>ACE <span>and nanoACE</span></h3>
+			</div>
+			<div class="tool-body">
+				<p>The Amortized Conditioning Engine: one transformer, trained on simulated data, that answers inference and prediction questions in a single forward pass and can take prior information at run time. It is research code in active development, and the start of our next generation of methods. nanoACE is a small, readable implementation with an in-browser playground.</p>
+				<p class="links"><a href="/nanoACE/">Playground</a> <a href="https://github.com/acerbilab/nanoACE">nanoACE</a> <a href="/amortized-conditioning-engine/">ACE paper</a></p>
+				<p class="ref">Chang, Loka, Huang, Remes, Kaski &amp; Acerbi, <a href="/amortized-conditioning-engine/">AISTATS 2025</a></p>
+			</div>
+		</article>
+	</div>
+</section>
+
+<section id="in-use" class="band" aria-labelledby="in-use-title">
+	<div class="wrap">
+		<p class="kicker">In use</p>
+		<h2 id="in-use-title">Fitting models across the sciences</h2>
+		<p class="lead">Researchers use our tools to fit models in fields far from where they started. A few of them:</p>
+		<div class="cards fields" id="fields"></div>
+
+		<article class="card story">
+			<img src="assets/one-cause-or-two.jpg" alt="A marmot on a rock at dusk, wondering: a fox, or the wind and a bird?" width="1600" height="900" loading="lazy">
+			<div>
+				<p class="kicker">Story · Perception</p>
+				<h3>One cause or two?</h3>
+				<p>How does the brain decide whether a sight and a sound come from the same thing? A short film about causal inference in perception, and about a study whose models were fitted with BADS.</p>
+				<p class="links"><a href="/one-cause-or-two/">Watch the film</a> <a href="https://doi.org/10.1371/journal.pcbi.1014251">Read the paper</a></p>
+			</div>
+		</article>
+	</div>
+</section>
+
+<section id="help" class="band" aria-labelledby="help-title">
+	<div class="wrap">
+		<p class="kicker">Help and news</p>
+		<h2 id="help-title">Ask us, follow along</h2>
+		<p class="lead">Questions about the tools, or how to use them for your model? Ask in our <a href="https://github.com/orgs/acerbilab/discussions">Discussions forum</a>. New methods are on the way: follow Luigi to hear about releases and papers.</p>
+		<div class="actions">
+			<a class="btn" href="https://github.com/orgs/acerbilab/discussions">Discussions</a>
+			<a class="btn ghost" href="https://bsky.app/profile/lacerbi.bsky.social">Bluesky</a>
+			<a class="btn ghost" href="https://x.com/AcerbiLuigi">X</a>
+			<a class="btn ghost" href="https://www.linkedin.com/in/luigi-acerbi-719b492/">LinkedIn</a>
+			<a class="btn ghost" href="https://github.com/acerbilab">GitHub</a>
+		</div>
+	</div>
+</section>
+
+</main>
+
+<footer class="foot">
+	<div class="wrap">
+		<p>From <a href="https://lacerbi.github.io/">Luigi Acerbi</a>'s <a href="https://www.helsinki.fi/en/researchgroups/machine-and-human-intelligence">Machine and Human Intelligence Group</a>, University of Helsinki.</p>
+		<p class="small">The tools are open source; each repository states its licence.</p>
+	</div>
+</footer>
+
+</body>
+</html>
