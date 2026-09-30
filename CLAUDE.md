@@ -33,7 +33,9 @@ second per evaluation and are still costly to fit well; the page speaks to both.
   ground, as in the PyVBMC animation. Every picture of a method comes from a real run of
   it, never a drawing.
 - **One colour per method,** used wherever the method appears (`:root` in
-  `site/css/style.css`): BADS orange, VBMC magenta, IBS cyan, ACE yellow-green.
+  `site/css/style.css`): BADS orange, VBMC magenta, IBS green, ACE yellow-green. Cyan is
+  the colour of the interface (links, labels, the main button), as it is of the surrogate
+  in the wireframe.
 - **Type:** IBM Plex Sans for text, IBM Plex Mono for labels and code, STIX Two Text
   italic for accents.
 - **The page is dark only**, like the animations.

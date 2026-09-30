@@ -23,6 +23,7 @@ function renderFields() {
 	for (const f of FIELDS) {
 		const card = document.createElement("article");
 		card.className = "card field";
+		card.style.setProperty("--accent", /VBMC/.test(f.tool) ? "var(--vbmc)" : /IBS/.test(f.tool) ? "var(--ibs)" : "var(--bads)");
 		card.innerHTML = `
 			<p class="area"></p>
 			<h3><a></a></h3>
