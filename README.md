@@ -37,9 +37,11 @@ and not on the local preview.
 `site/wireframe/vbmc/` is a copy of the 3D animation of a PyVBMC run from the PyVBMC
 repository (`docsrc/source/_static/vbmc3d/index.html` and `trace.js`, branch
 `feat-3d-animation`), where its design notes, the exporter of its traces and its checks
-live. Changes to the animation are made there and copied here. The hero loads it with
-`?hud=0` (no text or controls) on screens wider than 760 px that allow motion; elsewhere
-it shows `assets/hero.jpg`, a still of the same run.
+live. Changes to the animation are made there and copied here. The hero shows
+`assets/hero.jpg`, a still of the same run, and plays the animation over it
+(`?hud=0&t=40`: no text or controls, 40 s into the run) once the page has loaded, only
+while the hero is on screen. Visitors who ask for reduced motion or data saving keep the
+still.
 
 ## Deploy
 

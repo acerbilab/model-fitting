@@ -106,7 +106,7 @@ h1 { font-size: clamp(2.3rem, 4.4vw + 0.6rem, 4rem); margin: 0 0 0.35em; }
 }
 @media (max-width: 760px) {
 	.hero { min-height: 0; justify-content: flex-end; }
-	.stage { position: relative; inset: auto; height: 56vw; min-height: 220px; }
+	.stage { position: relative; inset: auto; height: 78vw; min-height: 260px; }
 	.stage .poster { object-position: 60% 50%; }
 	.stage::after { background: linear-gradient(0deg, rgba(4, 7, 12, 1) 0%, rgba(4, 7, 12, 0) 45%); }
 	.hero-text { padding-top: 0; padding-bottom: 28px; margin-top: -36px; }
