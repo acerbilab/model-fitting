@@ -40,6 +40,14 @@ second per evaluation and are still costly to fit well; the page speaks to both.
   italic for accents.
 - **The page is dark only**, like the animations.
 
+## Nothing from other servers
+
+Everything the page loads comes from this site: fonts, scripts, images and films. No
+embedded players, font services, CDNs, analytics or cookies, so a visit sends the visitor's
+address to no one but the host and the page needs no consent banner. A film plays from a
+file on the site in a `<video>`, with a plain link to its YouTube upload. Links to other
+sites are fine, since they load nothing until clicked.
+
 ## Accuracy
 
 - Claims about a tool follow its papers and documentation. The parameter ranges are
@@ -65,3 +73,9 @@ chrome --headless=new --hide-scrollbars --window-size=540,5200 \
 On Windows, headless Chrome lays pages out at least about 520 px wide whatever
 `--window-size` says, so 540 px stands in for a phone. The window height sets how much of
 the page the screenshot covers.
+
+Check too that nothing loads from another server; this finds nothing:
+
+```sh
+grep -rnE "(src=|@import|url\(|rel=\"(stylesheet|preload|preconnect|modulepreload)\"[^>]*href=)[\"']?https?://|from ['\"]https?://|import\(['\"]https?://" site
+```

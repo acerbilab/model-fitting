@@ -9,15 +9,20 @@ code. Films, talks and posts about the tools link here.
 |---|---|
 | `site/index.html` | The page: hero, "Which tool do I need?", the tools, the next wave, the tools in use, help and news |
 | `site/css/style.css` | Styles; the palette and type follow the wireframe animations |
+| `site/css/fonts.css`, `site/fonts/` | The typefaces, served from the site, with their licences |
+| `site/vendor/` | three.js r128, which the wireframe draws with |
 | `site/js/main.js` | Starts the live wireframe in the hero, and renders the "In use" cards |
 | `site/js/fields.js` | The studies shown in "In use", one per field |
 | `site/wireframe/vbmc/` | An interactive wireframe of a real PyVBMC run (see below) |
 | `site/assets/` | Hero still, social-card image, favicon, the *One cause or two?* poster |
 | `.github/workflows/pages.yml` | Deploys `site/` to GitHub Pages on every push to `main` that changes it |
 
-The page is static HTML, CSS and JavaScript modules, with no build step. It loads IBM Plex
-Sans, IBM Plex Mono and STIX Two Text from Google Fonts, and the wireframe loads three.js
-from cdnjs.
+The page is static HTML, CSS and JavaScript modules, with no build step. It loads nothing
+from other servers, so a visit sends the visitor's address to no one but the host, and the
+page sets no cookies. The fonts are IBM Plex Sans, IBM Plex Mono and STIX Two Text,
+in the Latin and Latin Extended subsets that Google Fonts serves, each with its SIL Open
+Font License. three.js is the r128 build that cdnjs serves (MIT licence, in the file's
+header).
 
 ## Preview
 
@@ -37,7 +42,10 @@ and not on the local preview.
 `site/wireframe/vbmc/` is a copy of the 3D animation of a PyVBMC run from the PyVBMC
 repository (`docsrc/source/_static/vbmc3d/index.html` and `trace.js`, branch
 `feat-3d-animation`), where its design notes, the exporter of its traces and its checks
-live. Changes to the animation are made there and copied here. The hero shows
+live. Changes to the animation are made there and copied here. The copy here differs in two
+places of `index.html`: it loads the fonts (`../../css/fonts.css`) and three.js
+(`../../vendor/three.r128.min.js`) from this site, where the original loads them from Google
+Fonts and cdnjs. A new copy keeps both changes. The hero shows
 `assets/hero.jpg`, a still of the same run, and plays the animation over it (`?hud=0`: no
 text or controls) once the page has loaded, only while the hero is on screen. Visitors who ask for reduced motion or data saving keep the
 still.
