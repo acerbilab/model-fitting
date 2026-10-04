@@ -56,7 +56,9 @@ sites are fine, since they load nothing until clicked.
   models with up to 20 parameters, and CMA-ES the 40-parameter semiparametric fits. The
   paper does not use VBMC.
 - An entry in `site/js/fields.js` ("In use") must be a study that used the tool, as its
-  own text shows, not one that only cites it.
+  own text shows, not one that only cites it. Its venue is rated at least 1 by JUFO, the
+  Finnish Publication Forum (`https://jufo-rest.csc.fi/v1.1/etsi.php?nimi=<venue>`, then
+  `kanava/<Jufo_ID>` for the level); a level-0 or unrated venue does not qualify.
 
 ## Checks
 

@@ -38,13 +38,6 @@ export const FIELDS = [
 		tool: "VBMC", venue: "Acoustics Australia", year: 2022,
 	},
 	{
-		field: "Cancer pharmacology",
-		title: "Interrogating and quantifying in vitro cancer drug pharmacodynamics via agent-based and Bayesian Monte Carlo modelling",
-		url: "https://doi.org/10.3390/pharmaceutics14040749",
-		used: "VBMC estimated the parameters of an agent-based model of cancer cell cultures under drug treatment.",
-		tool: "VBMC", venue: "Pharmaceutics", year: 2022,
-	},
-	{
 		field: "Radiotherapy",
 		title: "Personalized in silico model for radiation-induced pulmonary fibrosis",
 		url: "https://doi.org/10.1098/rsif.2024.0525",
@@ -52,11 +45,32 @@ export const FIELDS = [
 		tool: "VBMC", venue: "Journal of the Royal Society Interface", year: 2024,
 	},
 	{
+		field: "Neurology",
+		title: "Push-pull effects of basal ganglia network in Parkinson's disease inferred by functional MRI",
+		url: "https://doi.org/10.1038/s41531-024-00835-7",
+		used: "BADS fitted a model of the basal ganglia circuit to each patient's brain activity, with deep brain stimulation on and off.",
+		tool: "BADS", venue: "npj Parkinson's Disease", year: 2024,
+	},
+	{
 		field: "Ion-channel biophysics",
 		title: "A rich conformational palette underlies human CaV2.1-channel availability",
 		url: "https://doi.org/10.1038/s41467-025-58884-2",
 		used: "BADS fitted the kinetic rates of a model of a human calcium channel.",
 		tool: "BADS", venue: "Nature Communications", year: 2025,
+	},
+	{
+		field: "Cognitive neuroscience",
+		title: "Causal inference in the multisensory brain",
+		url: "https://doi.org/10.1016/j.neuron.2019.03.043",
+		used: "BADS fitted models of how each participant combined flickering lights and fluttering sounds to judge their rate.",
+		tool: "BADS", venue: "Neuron", year: 2019,
+	},
+	{
+		field: "Decision neuroscience",
+		title: "Optimal policy for multi-alternative decisions",
+		url: "https://doi.org/10.1038/s41593-019-0453-9",
+		used: "BADS tuned a neural circuit model of choosing among several options to maximize its reward rate, in simulation.",
+		tool: "BADS", venue: "Nature Neuroscience", year: 2019,
 	},
 	{
 		field: "DNA computing",
@@ -73,11 +87,11 @@ export const FIELDS = [
 		tool: "BADS", venue: "Petroleum Science", year: 2022,
 	},
 	{
-		field: "Wind energy",
-		title: "Wind farm power optimization using Bayesian Adaptive Direct Search for active pitch control",
-		url: "https://doi.org/10.1109/ccssta62096.2024.10691844",
-		used: "BADS tuned the blade pitch of a wind farm's turbines to maximize its power output, in simulation.",
-		tool: "BADS", venue: "IEEE CCSSTA", year: 2024,
+		field: "Nuclear energy",
+		title: "Application of Kriging and Variational Bayesian Monte Carlo method for improved prediction of doped UO2 fission gas release",
+		url: "https://doi.org/10.1016/j.anucene.2020.108046",
+		used: "VBMC calibrated a model of fission gas release from doped uranium dioxide nuclear fuel against measurements from reactor experiments.",
+		tool: "VBMC", venue: "Annals of Nuclear Energy", year: 2021,
 	},
 	{
 		field: "Civil engineering",
@@ -85,5 +99,12 @@ export const FIELDS = [
 		url: "https://doi.org/10.1016/j.undsp.2023.02.005",
 		used: "BADS estimated the parameters of a model of how immersed tunnels settle, from field observations.",
 		tool: "BADS", venue: "Underground Space", year: 2023,
+	},
+	{
+		field: "Environmental economics",
+		title: "The impact of wildfires on the recreational value of heathland: A discrete factor approach with adjustment for on-site sampling",
+		url: "https://doi.org/10.1016/j.jeem.2020.102317",
+		used: "BADS estimated a model of visits to a heathland, to value its recreation and how wildfires change that value.",
+		tool: "BADS", venue: "Journal of Environmental Economics and Management", year: 2020,
 	},
 ];
