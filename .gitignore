@@ -1,2 +1,5 @@
 PLAN.md
 __pycache__/
+
+# Films, fetched from their releases when the site deploys
+site/media/

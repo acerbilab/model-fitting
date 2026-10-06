@@ -25,6 +25,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
+      # The films stay out of git: each comes from a release of this repository.
+      - name: Fetch the films from their releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p site/media
+          gh release download pybads-film --repo "$GITHUB_REPOSITORY" --pattern pybads-film.mp4 --dir site/media
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:

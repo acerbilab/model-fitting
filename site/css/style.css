@@ -173,6 +173,12 @@ h1 { font-size: clamp(2.3rem, 4.4vw + 0.6rem, 4rem); margin: 0 0 0.35em; }
 @media (max-width: 760px) {
 	.tool { grid-template-columns: 1fr; }
 }
+/* A tool's film: a file on the site, with its captions as a track */
+.film { margin: 22px 0 0; }
+.film video { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); background: #000; }
+.film video::cue { font-family: "IBM Plex Sans", system-ui, sans-serif; color: #e3eff6; background: rgba(0, 0, 0, 0.72); }
+.film figcaption { font-size: 0.95rem; color: var(--dim); margin-top: 10px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; }
+.film figcaption .links { margin: 0; }
 
 /* In use */
 .cards.fields { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); margin: 18px 0 28px; }

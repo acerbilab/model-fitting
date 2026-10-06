@@ -1,0 +1,97 @@
+WEBVTT
+
+00:00.400 --> 00:03.053
+Which parameters of your model fit your data best?
+
+00:03.303 --> 00:07.000
+The ones that minimize the error, or make your data most probable.
+
+00:07.350 --> 00:09.301
+This is an optimization problem.
+
+00:09.561 --> 00:14.904
+Picture the error as a landscape: the lower the ground, the better the fit. You want the lowest point.
+
+00:15.205 --> 00:21.604
+But you can't see the landscape. For many computational models, the error is approximated numerically, or noisy,
+
+00:21.604 --> 00:27.143
+so its slope is no guide, and each evaluation can take seconds: they are black boxes.
+
+00:27.843 --> 00:33.819
+Bayesian optimization fits a surrogate to the points it has seen: a statistical model of the whole landscape.
+
+00:34.069 --> 00:39.435
+It evaluates where the ground looks low, or might be. Then it updates the surrogate, and repeats.
+
+00:40.035 --> 00:42.946
+When the surrogate is accurate, this is smart and fast.
+
+00:43.546 --> 00:50.187
+But the surrogate can be wrong. If the landscape has a shape it can't capture, it keeps pointing to the wrong places.
+
+00:50.887 --> 00:53.240
+Instead, direct search uses no surrogate.
+
+00:53.560 --> 00:58.660
+From the best point so far, it tries a step in each direction, on a grid called the mesh.
+
+00:59.040 --> 01:05.514
+If a step finds lower ground, it moves there and takes bigger steps. If none does, it takes smaller ones.
+
+01:06.024 --> 01:10.363
+It can't be fooled, and it comes with convergence guarantees. But it is slow.
+
+01:11.063 --> 01:14.736
+Bayesian Adaptive Direct Search, or BADS, combines the two.
+
+01:15.056 --> 01:22.446
+It alternates a SEARCH stage, Bayesian optimization around the best point, and a POLL stage, a round of direct search.*
+
+01:22.826 --> 01:29.809
+As long as the SEARCH finds better points, BADS keeps searching. When it fails several times in a row, BADS polls.
+
+01:30.189 --> 01:31.907
+The two stages help each other.
+
+01:32.167 --> 01:40.444
+When the surrogate fails, the POLL moves away from the region it can't model, and the points it collects help build a better surrogate for the next SEARCH.
+
+01:41.144 --> 01:44.176
+Here is a real PyBADS run, on the same landscape.
+
+01:44.496 --> 01:49.593
+It starts with a few evaluations and fits the surrogate. The SEARCH heads downhill fast.
+
+01:50.363 --> 01:58.493
+But the trench is too narrow for the surrogate. From one deep point, it predicts deep ground where there is none, and four searches in a row fail.
+
+01:59.263 --> 02:05.731
+So PyBADS polls. One step lands in the trench, far lower than any point before, and the mesh grows.
+
+02:06.621 --> 02:10.009
+The points from the POLL show the surrogate the shape of the trench.
+
+02:10.519 --> 02:15.318
+Now the SEARCH is fast again: its next point lands near the bottom of the trench.
+
+02:15.958 --> 02:20.447
+When no step improves any more, the mesh shrinks, and PyBADS settles on the minimum.
+
+02:21.147 --> 02:24.163
+PyBADS never saw the true landscape. Here it is.
+
+02:24.803 --> 02:29.037
+Smart and fast when the surrogate is right. Slow but steady when it's wrong.
+
+02:29.737 --> 02:35.865
+That landscape had two parameters. BADS works with up to twenty, on rugged or noisy landscapes.
+
+02:36.305 --> 02:41.887
+On dozens of real model-fitting problems, it matched or beat sixteen other optimizers.*
+
+02:44.387 --> 02:51.597
+Since then, it has been used in hundreds of studies, from brains and quantum computers to oil wells and wildfires.*
+
+02:52.237 --> 02:53.038
+Join them.

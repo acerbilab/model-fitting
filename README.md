@@ -14,7 +14,8 @@ code. Films, talks and posts about the tools link here.
 | `site/js/main.js` | Starts the live wireframe in the hero, and renders the "In use" cards |
 | `site/js/fields.js` | The studies shown in "In use", one per field |
 | `site/wireframe/vbmc/` | An interactive wireframe of a real PyVBMC run (see below) |
-| `site/assets/` | Hero still, social-card image, favicon, the *One cause or two?* poster |
+| `site/assets/` | Hero still, social-card image, favicon, the *One cause or two?* poster, the PyBADS film's poster and captions |
+| `site/media/` | The films, gitignored: the deployment fetches each from a release (see below) |
 | `.github/workflows/pages.yml` | Deploys `site/` to GitHub Pages on every push to `main` that changes it |
 
 The page is static HTML, CSS and JavaScript modules, with no build step. It loads nothing
@@ -49,6 +50,28 @@ Fonts and cdnjs. A new copy keeps both changes. The hero shows
 `assets/hero.jpg`, a still of the same run, and plays the animation over it (`?hud=0`: no
 text or controls) once the page has loaded, only while the hero is on screen. Visitors who ask for reduced motion or data saving keep the
 still.
+
+## Films
+
+A film plays from a file on the site, in a `<video>` with its captions as a track and a
+link to its YouTube upload. The video stays out of git: it is an asset of a release of
+this repository, which `.github/workflows/pages.yml` downloads into `site/media/` before
+it deploys. So the release exists before a change that plays the film reaches `main`, or
+the deployment fails. The poster and the captions are small and committed in
+`site/assets/`.
+
+| Film | Release | Asset | Poster and captions |
+|---|---|---|---|
+| PyBADS, in the PyBADS entry | `pybads-film` | `pybads-film.mp4`, a 17 MB web encode of the 1080p master | `pybads-film.jpg`, `pybads-film.vtt` |
+
+To preview a film, fetch its file into `site/media/` first:
+
+```sh
+gh release download pybads-film --pattern pybads-film.mp4 --dir site/media
+```
+
+Python's `http.server` serves no byte ranges, so the preview plays a film from its start
+but cannot seek in it; GitHub Pages can.
 
 ## Deploy
 
