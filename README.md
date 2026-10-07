@@ -7,7 +7,7 @@ code. Films, talks and posts about the tools link here.
 
 | Path | Contents |
 |---|---|
-| `site/index.html` | The page: hero, "Which tool do I need?", the tools, the next wave, the tools in use, help and news |
+| `site/index.html` | The page: hero, "Which tool do I need?", the tools, the next wave, the tools in use, community and news |
 | `site/css/style.css` | Styles; the palette and type follow the wireframe animations |
 | `site/css/fonts.css`, `site/fonts/` | The typefaces, served from the site, with their licences |
 | `site/vendor/` | three.js r128, which the wireframe draws with |
@@ -55,8 +55,8 @@ still.
 
 The flag over the hero's title carries the latest release or film, in the colour of its
 method, and links to the method's entry, which says what is new. Each item also goes at
-the top of the dated list under "Help and news", where it stays when the flag moves on to
-the next one.
+the top of the dated list of news, next to "Community" in the page's last section, where
+it stays when the flag moves on to the next one.
 
 ## Films
 

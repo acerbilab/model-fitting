@@ -66,7 +66,8 @@ code { font-family: var(--mono); font-size: 0.9em; }
 .topbar nav a:hover { color: var(--ink); }
 @media (max-width: 640px) {
 	.topbar { flex-direction: column; align-items: flex-start; gap: 6px; padding-top: 10px; padding-bottom: 8px; }
-	.topbar nav { gap: 14px; max-width: 100%; }
+	/* The type shrinks with the screen, so the five links fit from about 360 px up. */
+	.topbar nav { gap: 12px; max-width: 100%; font-size: clamp(11px, 3.2vw, 13px); }
 }
 
 /* Hero: the wireframe fills the section; the text sits over its dark side. */
@@ -217,8 +218,8 @@ h1 { font-size: clamp(2.3rem, 4.4vw + 0.6rem, 4rem); margin: 0 0 0.35em; }
 	.story { grid-template-columns: 1fr; }
 }
 
-/* Help and news */
-.help { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px 56px; align-items: start; }
+/* Community and news */
+.community { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px 56px; align-items: start; }
 .news-title { font: 400 12px/1.6 var(--mono); letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); margin: 0 0 14px; }
 .news { list-style: none; margin: 0; padding: 0; }
 .news li { --accent: var(--ui); position: relative; padding: 14px 0 14px 20px; border-top: 1px solid var(--line); }
@@ -231,7 +232,7 @@ h1 { font-size: clamp(2.3rem, 4.4vw + 0.6rem, 4rem); margin: 0 0 0.35em; }
 .news b { color: var(--ink); font-weight: 600; }
 .news .links { margin-top: 6px; }
 @media (max-width: 760px) {
-	.help { grid-template-columns: 1fr; }
+	.community { grid-template-columns: 1fr; }
 }
 
 /* Footer */
