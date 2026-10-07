@@ -51,6 +51,13 @@ Fonts and cdnjs. A new copy keeps both changes. The hero shows
 text or controls) once the page has loaded, only while the hero is on screen. Visitors who ask for reduced motion or data saving keep the
 still.
 
+## News
+
+The flag over the hero's title carries the latest release or film, in the colour of its
+method, and links to the method's entry, which says what is new. Each item also goes at
+the top of the dated list under "Help and news", where it stays when the flag moves on to
+the next one.
+
 ## Films
 
 A film plays from a file on the site, in a `<video>` with its captions as a track and a
