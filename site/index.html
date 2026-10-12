@@ -45,7 +45,7 @@
 		<img class="poster" src="assets/hero.jpg" alt="" width="1600" height="900">
 	</div>
 	<div class="wrap hero-text">
-		<a class="flag" href="#bads" style="--accent: var(--bads)"><span class="tag">New</span> <span>PyBADS 1.5: faster, with periodic and fixed variables <span aria-hidden="true">→</span></span></a>
+		<a class="flag" href="#vbmc" style="--accent: var(--vbmc)"><span class="tag">New</span> <span>PyVBMC 1.5: faster, with PyMC models and stacking of runs <span aria-hidden="true">→</span></span></a>
 		<p class="eyebrow">Open-source tools for fitting models to data</p>
 		<h1 id="title">Make every likelihood evaluation count.</h1>
 		<p class="lead">Find the best-fitting parameters, the full posterior and the model evidence from a small budget of model evaluations, whether each one takes a fraction of a second or several minutes, and even when the likelihood is noisy or only available by simulation. In Python and MATLAB.</p>
@@ -115,6 +115,7 @@
 			</div>
 			<div class="tool-body">
 				<p>Variational Bayesian Monte Carlo: an approximate posterior over your parameters and an estimate of the model evidence, for model comparison, from a small budget of likelihood evaluations, even noisy ones. Best with up to about 10 parameters.</p>
+				<p class="new"><span class="tag">New in 1.5</span> Faster, with PyMC models, stacking of several runs (S-VBMC), exports to Torch and ArviZ, and a skill for guiding your coding agents. <a href="/pyvbmc/#what-s-new-in-pyvbmc-1-5">What's new</a></p>
 				<code class="install">pip install --upgrade pyvbmc</code>
 				<p class="links"><a href="/pyvbmc/">Docs</a> <a href="https://github.com/acerbilab/pyvbmc">Python</a> <a href="https://github.com/acerbilab/vbmc">MATLAB</a> <a href="wireframe/vbmc/">A run in 3D</a></p>
 				<p class="ref">Acerbi, <a href="https://arxiv.org/abs/1810.05558">NeurIPS 2018</a> and <a href="https://arxiv.org/abs/2006.08655">NeurIPS 2020</a> · Huggins, Li, Tobaben, Aarnos &amp; Acerbi, <a href="https://doi.org/10.21105/joss.05428">JOSS 2023</a></p>
@@ -199,6 +200,11 @@
 			<div id="news">
 				<h3 class="news-title">News</h3>
 				<ul class="news">
+					<li style="--accent: var(--vbmc)">
+						<time datetime="2026-10">Oct 2026</time>
+						<p><b>PyVBMC 1.5:</b> faster, with PyMC models and stacking of runs (S-VBMC), and a <span style="white-space: nowrap">3-minute</span> film on how PyVBMC works.</p>
+						<p class="links"><a href="/pyvbmc/#what-s-new-in-pyvbmc-1-5">What's new</a> <a href="#vbmc">Watch the film</a></p>
+					</li>
 					<li style="--accent: var(--bads)">
 						<time datetime="2026-10">Oct 2026</time>
 						<p><b>PyBADS 1.5:</b> faster, with periodic and fixed variables, and a <span style="white-space: nowrap">3-minute</span> film on how PyBADS works.</p>
