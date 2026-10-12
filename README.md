@@ -70,11 +70,13 @@ the deployment fails. The poster and the captions are small and committed in
 | Film | Release | Asset | Poster and captions |
 |---|---|---|---|
 | PyBADS, in the PyBADS entry | `pybads-film` | `pybads-film.mp4`, a 17 MB web encode of the 1080p master | `pybads-film.jpg`, `pybads-film.vtt` |
+| PyVBMC, in the PyVBMC entry | `pyvbmc-film` | `pyvbmc-film.mp4`, a 28 MB web encode of the 1080p master | `pyvbmc-film.jpg`, `pyvbmc-film.vtt` |
 
 To preview a film, fetch its file into `site/media/` first:
 
 ```sh
 gh release download pybads-film --pattern pybads-film.mp4 --dir site/media
+gh release download pyvbmc-film --pattern pyvbmc-film.mp4 --dir site/media
 ```
 
 Python's `http.server` serves no byte ranges, so the preview plays a film from its start

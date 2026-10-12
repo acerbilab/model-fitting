@@ -1,0 +1,124 @@
+WEBVTT
+
+00:01.000 --> 00:04.830
+Your model's likelihood takes seconds, or minutes, to compute.
+
+00:05.330 --> 00:08.280
+You want the posterior over its parameters.
+
+00:08.630 --> 00:12.920
+The posterior tells you how plausible each setting is, given your data.
+
+00:13.620 --> 00:15.800
+Picture the posterior as a landscape.
+
+00:16.150 --> 00:19.190
+The higher the ground, the more plausible the setting.
+
+00:20.290 --> 00:23.680
+The textbook method is Markov chain Monte Carlo.
+
+00:24.030 --> 00:27.020
+It needs tens of thousands of evaluations.
+
+00:27.520 --> 00:30.340
+At a few minutes each, you would wait weeks.
+
+00:31.440 --> 00:36.570
+Bayesian optimization finds the highest point of a landscape in far fewer evaluations.
+
+00:36.920 --> 00:42.030
+It learns the landscape from the points it has seen, then decides where to explore next.
+
+00:42.630 --> 00:46.260
+PyVBMC does the same for the whole posterior.
+
+00:47.360 --> 00:48.740
+We start in the dark.
+
+00:49.240 --> 00:53.020
+Each evaluation reveals the height at a single point.
+
+00:54.120 --> 00:57.930
+From these few points, PyVBMC builds a surrogate.
+
+00:58.280 --> 01:02.180
+The surrogate is a cheap statistical model of the whole landscape.
+
+01:02.680 --> 01:05.340
+At the evaluated points it holds still.
+
+01:05.690 --> 01:07.770
+Everywhere else it wobbles.
+
+01:08.270 --> 01:10.540
+The more it wobbles, the less it knows.
+
+01:11.640 --> 01:15.580
+On the surrogate, PyVBMC fits a mixture of Gaussians.
+
+01:16.180 --> 01:18.340
+Why not use the surrogate itself?
+
+01:18.690 --> 01:22.810
+It gives a height at every point, but it's not directly usable.
+
+01:23.260 --> 01:27.520
+A mixture of Gaussians you can sample and compute with, exactly.*
+
+01:28.120 --> 01:31.000
+This is its first guess at the posterior.
+
+01:31.350 --> 01:33.360
+For now it is a crude one.
+
+01:34.460 --> 01:36.360
+Where to evaluate next?
+
+01:36.860 --> 01:39.540
+An optimizer would head for the peak.
+
+01:39.890 --> 01:45.940
+PyVBMC is after the whole posterior, so it explores places that are plausible and still uncertain.
+
+01:49.460 --> 01:50.510
+Evaluate.
+
+01:51.110 --> 01:52.600
+Update the surrogate.
+
+01:53.200 --> 01:54.470
+Refit the mixture.
+
+01:57.070 --> 02:00.150
+Round after round, the wobbling dies down.
+
+02:01.650 --> 02:04.840
+The mixture grows new components to follow the ridge.
+
+02:13.570 --> 02:16.460
+PyVBMC never saw the true landscape.
+
+02:17.060 --> 02:18.100
+Here it is.
+
+02:19.200 --> 02:22.730
+The same calculation gives an estimate of the model's evidence.
+
+02:23.080 --> 02:25.600
+You need that number to compare two models.
+
+02:26.100 --> 02:29.070
+The estimate lands close to the true value.
+
+02:30.470 --> 02:33.390
+All this from a hundred evaluations.
+
+02:33.890 --> 02:37.680
+Markov chain Monte Carlo would have needed tens of thousands.
+
+02:38.380 --> 02:40.880
+Weeks of waiting became an afternoon.
+
+02:41.480 --> 02:45.170
+At a second per evaluation, hours become minutes.
