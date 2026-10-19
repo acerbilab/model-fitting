@@ -14,7 +14,7 @@ code. Films, talks and posts about the tools link here.
 | `site/js/main.js` | Starts the live wireframe in the hero, and renders the "In use" cards |
 | `site/js/fields.js` | The studies shown in "In use", one per field |
 | `site/wireframe/vbmc/` | An interactive wireframe of a real PyVBMC run (see below) |
-| `site/assets/` | Hero still, social-card image, favicon, the *One cause or two?* poster, the PyBADS film's poster and captions |
+| `site/assets/` | Hero still, social-card image, favicon, the *One cause or two?* poster, the films' posters and captions |
 | `site/media/` | The films, gitignored: the deployment fetches each from a release (see below) |
 | `.github/workflows/pages.yml` | Deploys `site/` to GitHub Pages on every push to `main` that changes it |
 
@@ -71,12 +71,14 @@ the deployment fails. The poster and the captions are small and committed in
 |---|---|---|---|
 | PyBADS, in the PyBADS entry | `pybads-film` | `pybads-film.mp4`, a 17 MB web encode of the 1080p master | `pybads-film.jpg`, `pybads-film.vtt` |
 | PyVBMC, in the PyVBMC entry | `pyvbmc-film` | `pyvbmc-film.mp4`, a 28 MB web encode of the 1080p master | `pyvbmc-film.jpg`, `pyvbmc-film.vtt` |
+| PyIBS, in the PyIBS entry | `pyibs-film` | `pyibs-film.mp4`, a 7 MB web encode of the 1080p master | `pyibs-film.jpg`, `pyibs-film.vtt` |
 
 To preview a film, fetch its file into `site/media/` first:
 
 ```sh
 gh release download pybads-film --pattern pybads-film.mp4 --dir site/media
 gh release download pyvbmc-film --pattern pyvbmc-film.mp4 --dir site/media
+gh release download pyibs-film --pattern pyibs-film.mp4 --dir site/media
 ```
 
 Python's `http.server` serves no byte ranges, so the preview plays a film from its start

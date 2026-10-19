@@ -1,0 +1,160 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:02.470
+You have a model and some data.
+
+00:00:02.470 --> 00:00:05.490
+The model assigns a probability to each observation.
+
+00:00:05.490 --> 00:00:11.860
+For example, in a behavioral experiment, each observation is the response a person gave on one trial.
+
+00:00:11.860 --> 00:00:15.930
+The log-likelihood is the sum of the logarithms of these probabilities.
+
+00:00:15.930 --> 00:00:18.960
+It measures how well the model explains the data.
+
+00:00:18.960 --> 00:00:21.650
+The log-likelihood changes with the model’s parameters.
+
+00:00:21.650 --> 00:00:26.650
+A common way to fit a model is to choose the parameters where the log-likelihood is highest.
+
+00:00:26.650 --> 00:00:32.320
+The log-likelihood is also used to compare models and to compute the Bayesian posterior over the parameters.
+
+00:00:32.320 --> 00:00:36.390
+For many models, however, there is no formula for these probabilities.
+
+00:00:36.390 --> 00:00:43.020
+Take a model of how people play four-in-a-row, which is used to study how people plan ahead and how this changes as they learn.
+
+00:00:43.020 --> 00:00:45.680
+Each trial is a position from a real game.
+
+00:00:45.680 --> 00:00:48.620
+The response is the move the person played in it.
+
+00:00:48.620 --> 00:00:51.890
+Given a position, the model searches a few moves ahead.
+
+00:00:51.890 --> 00:00:54.410
+Its evaluation of the moves is partly random.
+
+00:00:54.410 --> 00:01:00.020
+The probability of each move depends on every search tree the model could build, so it cannot be computed.
+
+00:01:00.020 --> 00:01:04.890
+But you can give the model the same position as many times as you like.
+
+00:01:04.890 --> 00:01:06.970
+Each time it simulates a move.
+
+00:01:06.970 --> 00:01:12.500
+Over many simulations, the fraction that match the person’s move approaches its probability.
+
+00:01:12.500 --> 00:01:18.380
+The obvious approach is to simulate each trial a fixed number of times and take the log of the fraction that match.
+
+00:01:18.380 --> 00:01:22.110
+If the person made an unlikely move, none of the simulations may match.
+
+00:01:22.110 --> 00:01:26.150
+Then the estimate is the log of zero, which is minus infinity.
+
+00:01:26.150 --> 00:01:34.600
+A simple fix adds one to both counts, but with twenty simulations a probability of one in a hundred gets almost the same estimate as one in a million.
+
+00:01:34.600 --> 00:01:38.970
+With a fixed number of simulations, no fix makes the estimate unbiased.
+
+00:01:38.970 --> 00:01:44.840
+This one is too high on average, most of all for the responses the model explains worst.
+
+00:01:44.840 --> 00:01:48.210
+This bias does not average out over the trials.
+
+00:01:48.210 --> 00:01:49.530
+It adds up.
+
+00:01:49.530 --> 00:01:54.480
+It is larger at some parameter values than at others, so it moves the best fit.
+
+00:01:54.480 --> 00:02:00.050
+More simulations reduce the bias, but how many are enough depends on the probabilities you want to estimate.
+
+00:02:00.050 --> 00:02:06.640
+With fixed sampling, a hundred simulations per trial still left one parameter of the four-in-a-row model biased.*
+
+00:02:06.640 --> 00:02:10.170
+Inverse binomial sampling turns the obvious approach around.
+
+00:02:10.170 --> 00:02:15.330
+It simulates each trial until the first match and counts how many simulations it took.
+
+00:02:15.330 --> 00:02:17.900
+Likely responses need few simulations.
+
+00:02:17.900 --> 00:02:20.060
+Unlikely ones need many more.
+
+00:02:20.060 --> 00:02:23.070
+The average count is one over the probability.
+
+00:02:23.070 --> 00:02:24.860
+The estimate starts at zero.
+
+00:02:24.860 --> 00:02:30.880
+Each miss before the match subtracts one more term, first one, then a half, then a third.
+
+00:02:30.880 --> 00:02:32.670
+This estimate is unbiased.
+
+00:02:32.670 --> 00:02:37.390
+On average it equals the true log probability, however small the probability is.*
+
+00:02:37.390 --> 00:02:41.700
+Summing over the trials gives an unbiased estimate of the log-likelihood.
+
+00:02:41.700 --> 00:02:44.550
+The count also gives an error bar for the estimate.
+
+00:02:44.550 --> 00:02:47.770
+Summed over the trials, the error bars are calibrated.
+
+00:02:47.770 --> 00:02:51.390
+The true log-likelihood falls inside them as often as it should.
+
+00:02:51.390 --> 00:02:54.620
+To reduce the noise, you can repeat the estimate and average.
+
+00:02:54.620 --> 00:03:00.100
+PyIBS simulates all the trials together, one round at a time, until each has matched.
+
+00:03:00.100 --> 00:03:03.440
+Then it returns the estimate and its error bar.
+
+00:03:03.440 --> 00:03:06.406
+The four-in-a-row model is only one example.
+
+00:03:06.406 --> 00:03:13.270
+PyIBS works with any model that can simulate each observation on its own, as long as the observations are discrete.
+
+00:03:13.270 --> 00:03:20.190
+You can then use PyBADS to find the maximum-likelihood fit or PyVBMC to approximate the Bayesian posterior.
+
+00:03:20.190 --> 00:03:24.160
+Both are designed to work with noisy estimates like those of IBS.
+
+00:03:24.160 --> 00:03:28.420
+No fitting method can correct a biased estimate like that of fixed sampling.
+
+00:03:28.420 --> 00:03:32.790
+With a biased estimate, a study can reach a false conclusion and be confident in it.
+
+00:03:32.790 --> 00:03:35.510
+With IBS, the estimate is only noisy.
+
+00:03:35.510 --> 00:03:38.230
+Its error bar shows how far to trust it.
